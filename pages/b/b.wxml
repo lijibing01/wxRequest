@@ -1,0 +1,1 @@
+<button type="primary" bindtap="toPageC">去C页面</button>

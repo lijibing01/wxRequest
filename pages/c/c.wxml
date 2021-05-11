@@ -1,0 +1,1 @@
+<button type="primary" bindtap="toPageA">switch去A页面</button>

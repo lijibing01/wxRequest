@@ -1,0 +1,7 @@
+<view class="page-index">
+	<button type="primary" bindtap="toPageB" class="mt10">去B页面</button>
+	<button type="primary" bindtap="down" class="mt10">下载并上传</button>
+	<button type="primary" bindtap="abortUpload" class="mt10">取消上传</button>
+	<button type="primary" bindtap="cancela0" class="mt10">取消id=a0请求</button>
+	<button type="primary" bindtap="cancela2" class="mt10">取消id=a2请求</button>
+</view>

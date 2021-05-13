@@ -73,7 +73,6 @@ Page({
 		})
 	},
 	down: function() {
-		let that = this
 		let p = api.request.download({
 			url: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg9.51tietu.net%2Fpic%2F2019-091210%2Ft5pp4k0a0igt5pp4k0a0ig.jpg&refer=http%3A%2F%2Fimg9.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1620808181&t=2ffb84c52a0a6287816ef23bd39ab249',
 			whiteList: false,
@@ -89,7 +88,6 @@ Page({
 		})
 	},
 	upload: function(tempFilePath) {
-		let that = this
 		let p = api.request.upload({
 			url: 'https://jsonplaceholder.typicode.com/posts/',
 			filePath: tempFilePath,

@@ -5,6 +5,8 @@ let initialValue = {
 	retry: 2, // 接口请求失败时默认重试2次
 }
 
+let app = typeof uni === 'object' ? uni : wx
+
 // 已经发起请求的集合 例：requestId为1时， {1: {task: requestTask, page: '表示是哪个页面发起的请求', reject: '取消请求的promise'}} , requestTask是wx.request的返回的对象，可以用于取消请求
 let RequestTasks = {}
 
@@ -55,7 +57,7 @@ class wxRequest {
 	}
 
 	request(resolve, reject, param, requestId, page, num = 0) {
-		let requestTask = wx.request({
+		let requestTask = app.request({
 			url: this.getRealUrl(param.url),
 			data: param.data || {},
 			header: {
@@ -135,7 +137,7 @@ class wxRequest {
 			}
 			this.getToken(param, requestId, page).then(() => {
 				if (RequestTasks[requestId]) {
-					uploadTask = wx.uploadFile({
+					uploadTask = app.uploadFile({
 						url: this.getRealUrl(param.url),
 						filePath: param.filePath,
 						name: param.name,
@@ -182,7 +184,7 @@ class wxRequest {
 			}
 			this.getToken(param, requestId, page).then(() => {
 				if (RequestTasks[requestId]) {
-					downTask = wx.downloadFile({
+					downTask = app.downloadFile({
 						url: this.getRealUrl(param.url),
 						success: (res) => {
 							this.number--
@@ -246,10 +248,10 @@ class wxRequest {
 		this.number++
 		this.lock = true
 		let requestTime = Date.now()
-		wx.login({
+		app.login({
 			success: (msg) => {
 				if (msg && msg.code) {
-					wx.request({
+					app.request({
 						url: this.getRealUrl(this.options.loginUrl),
 						data: {
 							code: msg.code
